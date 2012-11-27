@@ -31,7 +31,7 @@ module Excon
 
       if @params.has_key?(:client_cert) && @params.has_key?(:client_key)
         ssl_context.cert = OpenSSL::X509::Certificate.new(File.read(@params[:client_cert]))
-        ssl_context.key = OpenSSL::PKey::RSA.new(File.read(@params[:client_key]))
+        ssl_context.key = OpenSSL::PKey::RSA.new(File.read(@params[:client_key]),@params[:client_pass])
       end
 
       if @proxy
